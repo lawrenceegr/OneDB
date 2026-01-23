@@ -6,169 +6,130 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>814</width>
-    <height>665</height>
+    <width>664</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="configButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>101</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Configure DB</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="connectButton">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>70</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Connect</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="disconnectButton">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>70</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Disconnect</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="statusLabel">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>50</y>
-      <width>321</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Status: Disconnected</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="queryLable">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>120</y>
-      <width>81</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>SQL Query:</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="queryEdit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>150</y>
-      <width>731</width>
-      <height>81</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="queryButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>250</y>
-      <width>121</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Execute Query</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="refreshButton">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>250</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Refresh</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="resultLabel">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>290</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Query Results:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="activityLabel">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>470</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Activity Logs:</string>
-    </property>
-   </widget>
-   <widget class="QTableView" name="resultView">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>330</y>
-      <width>751</width>
-      <height>111</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QListView" name="activityView">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>500</y>
-      <width>751</width>
-      <height>101</height>
-     </rect>
-    </property>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="configButton">
+        <property name="text">
+         <string>Configure DB</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="connectButton">
+        <property name="text">
+         <string>Connect</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="disconnectButton">
+        <property name="text">
+         <string>Disconnect</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="statusLabel">
+        <property name="text">
+         <string>Status: Disconnected</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="queryLable">
+      <property name="text">
+       <string>SQL Query:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="queryEdit"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="queryButton">
+        <property name="text">
+         <string>Execute Query</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="refreshButton">
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="resultLabel">
+      <property name="text">
+       <string>Query Results:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="resultView"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="activityLabel">
+      <property name="text">
+       <string>Activity Logs:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListView" name="activityView"/>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>814</width>
-     <height>23</height>
+     <width>664</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
