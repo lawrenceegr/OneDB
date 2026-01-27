@@ -140,27 +140,22 @@
     <addaction name="actionNew"/>
     <addaction name="actionSave"/>
    </widget>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>View</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuDatabase">
+    <property name="title">
+     <string>Database</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuView"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuDatabase"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionConfigure">
-   <property name="text">
-    <string>Configure</string>
-   </property>
-  </action>
   <action name="actionHelp">
    <property name="text">
     <string>Help</string>

@@ -7,6 +7,9 @@
 #include <QInputDialog>
 #include <QSqlQueryModel>
 #include <QStringListModel>
+#include <QMenuBar>
+#include <QMenu>
+#include <QAction>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -121,5 +124,30 @@ void MainWindow::on_queryButton_clicked()
         ui->resultView->setModel(model);
         addLog("Executed: " + sql.left(50));
     }
+}
+
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString path;
+    path = QFileDialog::getOpenFileName(
+        this,
+        "Open Existing Database",
+        "",
+        "SQLite Database (*.db *.sqlite);;All Files (*)"
+        );
+
+    if (!path.isEmpty()){
+        dbPath = path;
+        ui->statusLabel->setText("Status: Configured");
+        addLog("Configured: " + QFileInfo(path).fileName());
+    }
+
+}
+
+
+void MainWindow::on_actionNew_triggered()
+{
+
 }
 
