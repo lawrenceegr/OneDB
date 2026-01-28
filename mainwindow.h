@@ -7,6 +7,7 @@
 #include <QStringListModel>
 
 QT_BEGIN_NAMESPACE
+class QLabel;
 namespace Ui {
 class MainWindow;
 }
@@ -25,14 +26,16 @@ private:
     QString dbPath;
     QSqlDatabase db;
     QStringListModel *activityModel;
+    QLabel *statusLabel;
     QStringList activityLog;
     void addLog(const QString &message);
 
 private slots:
-    void on_configButton_clicked();
-    void on_connectButton_clicked();
-    void on_disconnectButton_clicked();
     void on_queryButton_clicked();
+    void on_actionNew_Database_triggered();
+    void on_actionOpen_Database_triggered();
+    void on_actionConnect_triggered();
+    void on_actionDisconnect_triggered();
 };
 
 

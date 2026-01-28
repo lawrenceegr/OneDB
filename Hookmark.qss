@@ -1,0 +1,441 @@
+/* ═══════════════════════════════════════════════════════════════
+   OneDB Theme — "Hookmark"
+   A modern dark theme with electric blue and amber accents
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────── Base Widgets ─────────────── */
+QWidget
+{
+	background-color: #121214;
+	color: #E8E8E8;
+	border-color: #3D3D42;
+	font-family: "Segoe UI", "SF Pro Display", system-ui;
+}
+
+QMainWindow
+{
+	background-color: #121214;
+}
+
+/* ─────────────── Labels ─────────────── */
+QLabel
+{
+	background-color: transparent;
+	color: #E8E8E8;
+	padding: 2px;
+}
+
+QLabel#logoLabel
+{
+	color: #00D4FF;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 4px 8px;
+}
+
+QLabel#statusIndicator
+{
+	color: #FF5252;
+	font-size: 12px;
+}
+
+QLabel#rowCountLabel
+{
+	color: #888888;
+	font-style: italic;
+}
+
+/* ─────────────── Frames ─────────────── */
+QFrame
+{
+	background-color: #1A1A1D;
+	border: 1px solid #2D2D32;
+	border-radius: 12px;
+}
+
+QFrame#statusFrame
+{
+	background-color: #252528;
+	border: 1px solid #3D3D42;
+	border-radius: 16px;
+}
+
+QFrame#connectionFrame
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #1F1F23, stop:1 #1A1A1D);
+	border-bottom: 2px solid #00D4FF;
+}
+
+QFrame#queryFrame,
+QFrame#resultsFrame,
+QFrame#activityFrame
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #1E1E22, stop:1 #1A1A1D);
+}
+
+/* ─────────────── Buttons ─────────────── */
+QPushButton
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #3B8BEB, stop:1 #2563EB);
+	color: #FFFFFF;
+	font-weight: 600;
+	font-size: 13px;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 16px;
+}
+
+QPushButton:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #00E5FF, stop:1 #00B8D4);
+}
+
+QPushButton:pressed
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #0097A7, stop:1 #00838F);
+}
+
+QPushButton:disabled
+{
+	background-color: #3D3D42;
+	color: #6B6B70;
+}
+
+/* Execute Button - Special Green */
+QPushButton#queryButton
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #4CAF50, stop:1 #388E3C);
+	font-size: 14px;
+}
+
+QPushButton#queryButton:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #66BB6A, stop:1 #4CAF50);
+}
+
+/* Disconnect Button - Danger Red */
+QPushButton#disconnectButton
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #EF5350, stop:1 #D32F2F);
+}
+
+QPushButton#disconnectButton:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #FF7043, stop:1 #F4511E);
+}
+
+/* Secondary Buttons */
+QPushButton#clearQueryButton,
+QPushButton#clearLogButton,
+QPushButton#exportButton,
+QPushButton#refreshButton
+{
+	background: transparent;
+	border: 1px solid #5F6368;
+	color: #AAAAAA;
+	font-weight: normal;
+}
+
+QPushButton#clearQueryButton:hover,
+QPushButton#clearLogButton:hover,
+QPushButton#exportButton:hover,
+QPushButton#refreshButton:hover
+{
+	background-color: #2D2D32;
+	border-color: #00D4FF;
+	color: #00D4FF;
+}
+
+/* ─────────────── Text Edit (Query Input) ─────────────── */
+QTextEdit
+{
+	background-color: #0D0D0F;
+	color: #E8E8E8;
+	border: 2px solid #2D2D32;
+	border-radius: 8px;
+	padding: 12px;
+	font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+	font-size: 13px;
+	selection-background-color: #2563EB;
+	selection-color: #FFFFFF;
+	line-height: 1.5;
+}
+
+QTextEdit:focus
+{
+	border: 2px solid #00D4FF;
+	background-color: #101012;
+}
+
+/* ─────────────── Table View ─────────────── */
+QTableView
+{
+	background-color: #0D0D0F;
+	alternate-background-color: #141416;
+	color: #E8E8E8;
+	border: 2px solid #2D2D32;
+	border-radius: 8px;
+	gridline-color: #2D2D32;
+	selection-background-color: #2563EB;
+	selection-color: #FFFFFF;
+	font-size: 13px;
+}
+
+QTableView::item
+{
+	padding: 8px 12px;
+	border-bottom: 1px solid #2D2D32;
+}
+
+QTableView::item:hover
+{
+	background-color: #1E3A5F;
+}
+
+QTableView::item:selected
+{
+	background-color: #2563EB;
+}
+
+QHeaderView::section
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #252528, stop:1 #1F1F23);
+	color: #00D4FF;
+	padding: 10px 12px;
+	border: none;
+	border-right: 1px solid #3D3D42;
+	border-bottom: 2px solid #00D4FF;
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+QHeaderView::section:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #2D2D32, stop:1 #252528);
+}
+
+/* ─────────────── List View (Activity Log) ─────────────── */
+QListView
+{
+	background-color: #0D0D0F;
+	color: #B0B0B0;
+	border: 2px solid #2D2D32;
+	border-radius: 8px;
+	padding: 4px;
+	font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+	font-size: 12px;
+}
+
+QListView::item
+{
+	padding: 6px 12px;
+	border-radius: 4px;
+	margin: 2px 4px;
+}
+
+QListView::item:hover
+{
+	background-color: #1E3A5F;
+	color: #FFFFFF;
+}
+
+QListView::item:selected
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+		stop:0 #2563EB, stop:1 #3B8BEB);
+	color: #FFFFFF;
+}
+
+/* ─────────────── Menu Bar ─────────────── */
+QMenuBar
+{
+	background-color: #0D0D0F;
+	color: #B0B0B0;
+	border-bottom: 1px solid #2D2D32;
+	padding: 4px 0px;
+	font-size: 13px;
+}
+
+QMenuBar::item
+{
+	padding: 6px 12px;
+	border-radius: 4px;
+	margin: 2px;
+}
+
+QMenuBar::item:selected
+{
+	background-color: #2563EB;
+	color: #FFFFFF;
+}
+
+QMenuBar::item:pressed
+{
+	background-color: #1D4ED8;
+}
+
+/* ─────────────── Dropdown Menus ─────────────── */
+QMenu
+{
+	background-color: #1A1A1D;
+	color: #E8E8E8;
+	border: 1px solid #3D3D42;
+	border-radius: 8px;
+	padding: 8px 4px;
+}
+
+QMenu::item
+{
+	padding: 8px 32px 8px 16px;
+	border-radius: 4px;
+	margin: 2px 4px;
+}
+
+QMenu::item:selected
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+		stop:0 #2563EB, stop:1 #3B8BEB);
+}
+
+QMenu::separator
+{
+	height: 1px;
+	background-color: #3D3D42;
+	margin: 8px 16px;
+}
+
+QMenu::icon
+{
+	margin-left: 8px;
+}
+
+/* ─────────────── Status Bar ─────────────── */
+QStatusBar
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+		stop:0 #0D0D0F, stop:0.5 #1A1A1D, stop:1 #0D0D0F);
+	color: #888888;
+	border-top: 1px solid #2D2D32;
+	font-size: 12px;
+	padding: 4px;
+}
+
+QStatusBar::item
+{
+	border: none;
+}
+
+/* ─────────────── Splitter ─────────────── */
+QSplitter::handle
+{
+	background-color: transparent;
+	height: 8px;
+}
+
+QSplitter::handle:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+		stop:0 transparent, stop:0.3 #00D4FF, stop:0.7 #00D4FF, stop:1 transparent);
+}
+
+/* ─────────────── Vertical Separator Line ─────────────── */
+Line
+{
+	color: #3D3D42;
+}
+
+/* ─────────────── Scrollbars ─────────────── */
+QScrollBar:vertical
+{
+	background-color: #121214;
+	width: 14px;
+	border: none;
+	border-radius: 7px;
+	margin: 4px 2px;
+}
+
+QScrollBar::handle:vertical
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+		stop:0 #3D3D42, stop:1 #4D4D52);
+	border-radius: 5px;
+	min-height: 30px;
+	margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+		stop:0 #00B8D4, stop:1 #00D4FF);
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical
+{
+	height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical
+{
+	background: transparent;
+}
+
+QScrollBar:horizontal
+{
+	background-color: #121214;
+	height: 14px;
+	border: none;
+	border-radius: 7px;
+	margin: 2px 4px;
+}
+
+QScrollBar::handle:horizontal
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #3D3D42, stop:1 #4D4D52);
+	border-radius: 5px;
+	min-width: 30px;
+	margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+		stop:0 #00B8D4, stop:1 #00D4FF);
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal
+{
+	width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal
+{
+	background: transparent;
+}
+
+/* ─────────────── Tooltips ─────────────── */
+QToolTip
+{
+	background-color: #252528;
+	color: #E8E8E8;
+	border: 1px solid #00D4FF;
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 12px;
+}

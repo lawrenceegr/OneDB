@@ -7,6 +7,7 @@
 #include <QInputDialog>
 #include <QSqlQueryModel>
 #include <QStringListModel>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
     db = QSqlDatabase::addDatabase("QSQLITE");
     activityModel = new QStringListModel(this);
     ui->activityView->setModel(activityModel);
+
+    statusLabel = new QLabel("● Disconnected", this);
+    ui->statusbar->addPermanentWidget(statusLabel);
 }
 
 MainWindow::~MainWindow()
@@ -27,75 +31,6 @@ void MainWindow::addLog(const QString &message)
 {
     activityLog.prepend(message);
     activityModel->setStringList(activityLog);
-}
-
-void MainWindow::on_configButton_clicked(){
-    QStringList options;
-    options << "Create New Database" << "Open Existing Database";
-
-    bool ok;
-    QString choice = QInputDialog::getItem(
-        this,
-        "Configure Database",
-        "Select an option:",
-        options,
-        0,
-        false,
-        &ok
-        );
-
-    if (!ok) return;
-
-    QString path;
-
-    if (choice == "Create New Database") {
-        path = QFileDialog::getSaveFileName(
-            this,
-            "Create New Database",
-            "",
-            "SQLite Database (*.db *.sqlite);;All Files (*)"
-            );
-    } else {
-        path = QFileDialog::getOpenFileName(
-            this,
-            "Open Existing Database",
-            "",
-            "SQLite Database (*.db *.sqlite);;All Files (*)"
-            );
-    }
-
-    if (!path.isEmpty()){
-        dbPath = path;
-        ui->statusLabel->setText("Status: Configured");
-        addLog("Configured: " + QFileInfo(path).fileName());
-    }
-}
-
-
-void MainWindow::on_connectButton_clicked(){
-    if(dbPath.isEmpty()){
-        addLog("Error: Configure database first!");
-        return;
-    }
-
-    db.setDatabaseName(dbPath);
-
-    if(db.open()){
-        ui->statusLabel->setText("Status: Connected");
-        addLog("Connected to database");
-    } else {
-        addLog("Error: Connection failed!");
-    }
-}
-
-void MainWindow::on_disconnectButton_clicked(){
-    if(db.isOpen()){
-        db.close();
-        ui->statusLabel->setText("Status: Disconnected");
-        addLog("Disconnected from database");
-    } else {
-        addLog("Error: Not connected");
-    }
 }
 
 void MainWindow::on_queryButton_clicked()
@@ -120,6 +55,72 @@ void MainWindow::on_queryButton_clicked()
     } else {
         ui->resultView->setModel(model);
         addLog("Executed: " + sql.left(50));
+    }
+}
+
+void MainWindow::on_actionNew_Database_triggered()
+{
+    QString path;
+
+    path = QFileDialog::getSaveFileName(
+        this,
+        "Create New Database",
+        "",
+        "SQLite Database (*.db *.sqlite);;All Files (*)"
+        );
+
+    if (!path.isEmpty()){
+        dbPath = path;
+        statusLabel->setText("● Configured");
+        addLog("Configured: " + QFileInfo(path).fileName());
+    }
+}
+
+void MainWindow::on_actionOpen_Database_triggered()
+{
+    QString path;
+
+    path = QFileDialog::getOpenFileName(
+        this,
+        "Open Existing Database",
+        "",
+        "SQLite Database (*.db *.sqlite);;All Files (*)"
+        );
+
+    if (!path.isEmpty()){
+        dbPath = path;
+        statusLabel->setText("● Configured");
+        addLog("Configured: " + QFileInfo(path).fileName());
+    }
+}
+
+
+void MainWindow::on_actionConnect_triggered()
+{
+    if(dbPath.isEmpty()){
+        addLog("Error: Configure database first!");
+        return;
+    }
+
+    db.setDatabaseName(dbPath);
+
+    if(db.open()){
+        statusLabel->setText("● Connected");
+        addLog("Connected to database");
+    } else {
+        addLog("Error: Connection failed!");
+    }
+}
+
+
+void MainWindow::on_actionDisconnect_triggered()
+{
+    if(db.isOpen()){
+        db.close();
+        statusLabel->setText("● Disconnected");
+        addLog("Disconnected from database");
+    } else {
+        addLog("Error: Not connected");
     }
 }
 
